@@ -1,0 +1,5 @@
+# Copy to terraform.tfvars and adjust.
+
+# region         = "ap-southeast-1"
+# instance_class = "db.t4g.large"   # use "db.m7g.large" for steady CPU (no burst credits), about 1.5x the price
+# local_port     = 15432            # laptop end of the SSM tunnel

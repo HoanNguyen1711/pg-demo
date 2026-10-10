@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    container_name: pg-demo
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    shm_size: 1g
+    volumes:
+      - ./sql:/demo:ro
+      - pgdata:/var/lib/postgresql/data
+    command:
+      - postgres
+      - -c
+      - shared_preload_libraries=pg_stat_statements
+      - -c
+      - shared_buffers=1GB
+      - -c
+      - work_mem=64MB
+      - -c
+      - maintenance_work_mem=512MB
+      - -c
+      - track_io_timing=on
+      - -c
+      - max_wal_size=4GB
+
+volumes:
+  pgdata:
